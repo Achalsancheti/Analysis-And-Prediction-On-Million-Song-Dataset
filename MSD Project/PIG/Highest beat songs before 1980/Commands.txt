@@ -1,0 +1,15 @@
+grunt> songs = LOAD 'bigdatafile.csv' USING PigStorage('\t') AS (Analysissamplerate:chararray, Artist7dID:chararray, Artistfamiliarity:chararray, Artisthotness:chararray,
+	   ArtistID:chararray, Artistlatitude:chararray, Artistlocation:chararray, Artistlongitude:chararray, Artist_name:chararray, AudioMD5:chararray, Numberofbeats:chararray,
+	   Danceability:chararray, Duration:chararray, Endoffadein:chararray, Energy:chararray, loudness:chararray, release:chararray, release7dID:chararray, Hotness:chararray,
+	   SongID:chararray, Startoffadeout:chararray, Tempo:chararray, Title:chararray, TrackID:chararray, Track7dID:chararray, Year:int, ArtistmbID:chararray, ArtistmbTags:chararray,
+	   ArtistmbCount:chararray, ArtistPlaymeID:chararray, ArtistTerms:chararray, ArtistTermFrequency:chararray, ArtistTermWeight:chararray, SimilarArtists:chararray);
+
+grunt> filteredsongs = FILTER songs BY (Year < 1980) AND (Year > 0);
+
+grunt> beats = FOREACH filteredsongs GENERATE Title, Artist_name, Numberofbeats, loudness, Year;
+
+grunt> numberofbeats = ORDER beats BY Numberofbeats DESC;
+
+grunt> top20 = LIMIT numberofbeats 20;
+
+grunt> STORE top20 INTO 'year_0_songs' ;

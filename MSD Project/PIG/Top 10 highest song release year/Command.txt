@@ -1,0 +1,9 @@
+grunt> songs = LOAD 'NumberofSongsperYear.csv' USING PigStorage('\t') AS (Year:int, Songs:chararray);
+
+grunt> sorting = FOREACH songs GENERATE Year, Songs;
+
+grunt> numberofsongs = ORDER sorting BY Songs DESC;
+
+grunt> top10 = LIMIT numberofsongs 10;
+
+grunt> STORE top10 INTO 'year_o_songs' ;

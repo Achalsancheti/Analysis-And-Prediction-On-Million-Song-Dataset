@@ -1,0 +1,9 @@
+grunt> songs = LOAD 'SongConsumption.csv' USING PigStorage('\t') AS (songID:chararray, Numberofuser:int, songviewed:int);
+
+grunt> generating = FOREACH songs GENERATE songID, Numberofuser, songviewed;
+
+grunt> numberofviews = ORDER generating BY songviewed DESC;
+
+grunt> top50 = LIMIT numberofviews 50;
+
+grunt> STORE top50 INTO 'year_0_songs' ;

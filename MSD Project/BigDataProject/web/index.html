@@ -1,0 +1,106 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html ng-app="helloApp">
+    <head>
+        <title>Big Data Project</title>
+        <link rel="stylesheet"
+              href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link
+            href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link
+            href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="CSS/styles.css">
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script
+        src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script
+        src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script src="JavaScript/script.js"></script>
+
+    </head>
+    <!-- Controller name goes here -->
+    <body ng-controller="MyCtrl" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#myPage">Big Data</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#about">HOME</a></li>
+                        <li><a href="#services">SONG-ID</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="about" class="jumbotron text-center">
+            <h1>Million Song Dataset</h1> 
+            <p>Created By Achal, Saurabh and Sumit</p> 
+            <div>The Million Song Dataset is a freely-available collection of audio features and metadata for a million contemporary popular music tracks.</div>
+        </div>
+
+        <div id="services" class="container-fluid text-center">
+            <h2>To get more information about a song, please enter the Song-Id.</h2><br /><br />
+
+            <form action ="number" name ="number" method="GET">
+                <b>Enter Song ID:</b>
+                <input type="text" name='number' required  placeholder="Enter SongID"><br /><br /><br />
+                <input type="submit"  value="Search Song" class="btn btn-primary" style="background-color: orangered"/>
+            </form>
+            <input type="submit"  value="Add a Song" onclick="registrationFormDisplay()" class="btn btn-primary" style="background-color: orangered"/><br /><br />
+                <div id="registrationForm" style="display: none;">
+                    <form class="form-horizontal" role="form" action="add" name="add" method="GET">
+                        <b>Enter Song ID:</b><input type="text" name='id' required  placeholder="SongID"><br /><br />
+                        <b>Enter Song Title:</b><input type="text" name='title' required  placeholder="Song Title"><br /><br />
+                        <b>Enter Song Hotness:</b><input type="text" name='hotness' required  placeholder="Song Hotness"><br /><br />
+                        <b>Enter Song Duration:</b><input type="text" name='duration' required  placeholder="Song Duration"><br /><br />
+                        <b>Enter Artist Name:</b><input type="text" name='name' required  placeholder="Artist Name"><br /><br />
+                        <b>Enter Artist Location:</b><input type="text" name='location' required  placeholder="Artist Location"><br /><br />
+                        <b>Enter User Count:</b><input type="text" name='count' required  placeholder="User Count"><br /><br />
+                        <b>Number of Times Played:</b><input type="text" name='played' required  placeholder="Times Played"><br /><br />
+                        <input type="submit" id="time" value="Add" class="btn btn-primary" style="background-color: orangered"/>
+                    </form>
+                </div>
+            </div>
+
+
+        <!-- Container (Contact Section) -->
+        <div id="contact" class="container-fluid bg-grey">
+            <h2 class="text-center">CONTACT</h2>
+            <div class="row">
+                <div class="col-sm-5">
+                    <p>Contact us and we'll get back to you within 24 hours.</p>
+                    <p><span class="glyphicon glyphicon-map-marker"></span> Boston, US</p>
+                    <p><span class="glyphicon glyphicon-phone"></span> +1 8572608323</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span> sancheti.a@husky.neu.edu</p>
+                </div>
+                <div class="col-sm-7 slideanim">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                        </div>
+                    </div>
+                    <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <button class="btn btn-default pull-right" type="submit">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
